@@ -24,12 +24,12 @@ Discarded input sections
  .ARM.exidx     0x0000000000000000        0x8 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
  .ARM.attributes
                 0x0000000000000000       0x1b /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
- .text          0x0000000000000000        0x0 /tmp/ccdLumA4.o (symbol from plugin)
- .text          0x0000000000000000        0x0 /tmp/ccVl4eor.ltrans0.ltrans.o
- .data          0x0000000000000000        0x0 /tmp/ccVl4eor.ltrans0.ltrans.o
- .bss           0x0000000000000000        0x0 /tmp/ccVl4eor.ltrans0.ltrans.o
- .data          0x0000000000000000        0x0 /tmp/ccs2ZE5G.o
- .bss           0x0000000000000000        0x0 /tmp/ccs2ZE5G.o
+ .text          0x0000000000000000        0x0 /tmp/ccrw893Z.o (symbol from plugin)
+ .text          0x0000000000000000        0x0 /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .data          0x0000000000000000        0x0 /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .bss           0x0000000000000000        0x0 /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .data          0x0000000000000000        0x0 /tmp/cck8OJdp.o
+ .bss           0x0000000000000000        0x0 /tmp/cck8OJdp.o
  .text          0x0000000000000000        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libg_nano.a(lib_a-exit.o)
  .data          0x0000000000000000        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libg_nano.a(lib_a-exit.o)
  .bss           0x0000000000000000        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libg_nano.a(lib_a-exit.o)
@@ -89,9 +89,9 @@ Linker script and memory map
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crti.o
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
-LOAD /tmp/ccdLumA4.o
-LOAD /tmp/ccVl4eor.ltrans0.ltrans.o
-LOAD /tmp/ccs2ZE5G.o
+LOAD /tmp/ccrw893Z.o
+LOAD /tmp/cc5uYZPE.ltrans0.ltrans.o
+LOAD /tmp/cck8OJdp.o
 START GROUP
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/libgcc.a
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libg_nano.a
@@ -110,38 +110,36 @@ END GROUP
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtend.o
 LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
 
-.text           0x0000000008000000      0x188
+.text           0x0000000008000000      0x148
  *(.isr_vector)
- .isr_vector    0x0000000008000000       0x44 /tmp/ccs2ZE5G.o
+ .isr_vector    0x0000000008000000       0x44 /tmp/cck8OJdp.o
                 0x0000000008000000                __isr_vector
  *(.text*)
  .text          0x0000000008000044       0x6c /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
- .text.led_flash
-                0x00000000080000b0       0x68 /tmp/ccVl4eor.ltrans0.ltrans.o
- .text.main     0x0000000008000118        0xa /tmp/ccVl4eor.ltrans0.ltrans.o
-                0x0000000008000118                main
- *fill*         0x0000000008000122        0x2 
- .text          0x0000000008000124       0x48 /tmp/ccs2ZE5G.o
-                0x0000000008000124                Reset_Handler
-                0x0000000008000168                DebugMon_Handler
-                0x0000000008000168                HardFault_Handler
-                0x0000000008000168                SysTick_Handler
-                0x0000000008000168                PendSV_Handler
-                0x0000000008000168                NMI_Handler
-                0x0000000008000168                UsageFault_Handler
-                0x0000000008000168                Default_Handler
-                0x0000000008000168                MemManage_Handler
-                0x0000000008000168                SVC_Handler
-                0x0000000008000168                DEF_IRQHandler
-                0x0000000008000168                BusFault_Handler
+ .text.startup.main
+                0x00000000080000b0       0x34 /tmp/cc5uYZPE.ltrans0.ltrans.o
+                0x00000000080000b0                main
+ .text          0x00000000080000e4       0x48 /tmp/cck8OJdp.o
+                0x00000000080000e4                Reset_Handler
+                0x0000000008000128                DebugMon_Handler
+                0x0000000008000128                HardFault_Handler
+                0x0000000008000128                SysTick_Handler
+                0x0000000008000128                PendSV_Handler
+                0x0000000008000128                NMI_Handler
+                0x0000000008000128                UsageFault_Handler
+                0x0000000008000128                Default_Handler
+                0x0000000008000128                MemManage_Handler
+                0x0000000008000128                SVC_Handler
+                0x0000000008000128                DEF_IRQHandler
+                0x0000000008000128                BusFault_Handler
  *(.init)
- .init          0x000000000800016c        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crti.o
-                0x000000000800016c                _init
- .init          0x0000000008000170        0x8 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
+ .init          0x000000000800012c        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crti.o
+                0x000000000800012c                _init
+ .init          0x0000000008000130        0x8 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
  *(.fini)
- .fini          0x0000000008000178        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crti.o
-                0x0000000008000178                _fini
- .fini          0x000000000800017c        0x8 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
+ .fini          0x0000000008000138        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crti.o
+                0x0000000008000138                _fini
+ .fini          0x000000000800013c        0x8 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -154,37 +152,37 @@ LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
  *(.dtors)
  *(.rodata*)
  *(.eh_frame*)
- .eh_frame      0x0000000008000184        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
- .eh_frame      0x0000000008000184        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtend.o
+ .eh_frame      0x0000000008000144        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
+ .eh_frame      0x0000000008000144        0x4 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtend.o
 
-.glue_7         0x0000000008000188        0x0
- .glue_7        0x0000000008000188        0x0 linker stubs
+.glue_7         0x0000000008000148        0x0
+ .glue_7        0x0000000008000148        0x0 linker stubs
 
-.glue_7t        0x0000000008000188        0x0
- .glue_7t       0x0000000008000188        0x0 linker stubs
+.glue_7t        0x0000000008000148        0x0
+ .glue_7t       0x0000000008000148        0x0 linker stubs
 
-.vfp11_veneer   0x0000000008000188        0x0
- .vfp11_veneer  0x0000000008000188        0x0 linker stubs
+.vfp11_veneer   0x0000000008000148        0x0
+ .vfp11_veneer  0x0000000008000148        0x0 linker stubs
 
-.v4_bx          0x0000000008000188        0x0
- .v4_bx         0x0000000008000188        0x0 linker stubs
+.v4_bx          0x0000000008000148        0x0
+ .v4_bx         0x0000000008000148        0x0 linker stubs
 
-.iplt           0x0000000008000188        0x0
- .iplt          0x0000000008000188        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
+.iplt           0x0000000008000148        0x0
+ .iplt          0x0000000008000148        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
 
-.rel.dyn        0x0000000008000188        0x0
- .rel.iplt      0x0000000008000188        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
+.rel.dyn        0x0000000008000148        0x0
+ .rel.iplt      0x0000000008000148        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008000188                __exidx_start = .
+                0x0000000008000148                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000008000188                __exidx_end = .
-                0x0000000008000188                __etext = ALIGN (0x4)
+                0x0000000008000148                __exidx_end = .
+                0x0000000008000148                __etext = ALIGN (0x4)
 
-.data           0x0000000020000000        0xc load address 0x0000000008000188
+.data           0x0000000020000000        0xc load address 0x0000000008000148
                 0x0000000020000000                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -210,10 +208,10 @@ LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
                 0x000000002000000c                . = ALIGN (0x4)
                 0x000000002000000c                __data_end__ = .
 
-.igot.plt       0x000000002000000c        0x0 load address 0x0000000008000194
+.igot.plt       0x000000002000000c        0x0 load address 0x0000000008000154
  .igot.plt      0x000000002000000c        0x0 /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
 
-.bss            0x000000002000000c       0x1c load address 0x0000000008000194
+.bss            0x000000002000000c       0x1c load address 0x0000000008000154
                 0x000000002000000c                . = ALIGN (0x4)
                 0x000000002000000c                __bss_start__ = .
  *(.bss*)
@@ -226,12 +224,12 @@ LOAD /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
                 0x0000000020000028                __end__ = .
                 [!provide]                        PROVIDE (end, .)
  *(.heap*)
- .heap          0x0000000020000028        0x0 /tmp/ccs2ZE5G.o
+ .heap          0x0000000020000028        0x0 /tmp/cck8OJdp.o
                 0x0000000020000028                __HeapLimit = .
 
 .stack_dummy    0x0000000020000028      0xc00
  *(.stack*)
- .stack         0x0000000020000028      0xc00 /tmp/ccs2ZE5G.o
+ .stack         0x0000000020000028      0xc00 /tmp/cck8OJdp.o
                 0x0000000020005000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
                 0x0000000020004400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
                 0x0000000020005000                PROVIDE (__stack, __StackTop)
@@ -245,41 +243,41 @@ OUTPUT(minimum-CM3.axf elf32-littlearm)
  .ARM.attributes
                 0x000000000000001d       0x2d /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtbegin.o
  .ARM.attributes
-                0x000000000000004a       0x31 /tmp/ccVl4eor.ltrans0.ltrans.o
+                0x000000000000004a       0x31 /tmp/cc5uYZPE.ltrans0.ltrans.o
  .ARM.attributes
-                0x000000000000007b       0x1b /tmp/ccs2ZE5G.o
+                0x000000000000007b       0x1b /tmp/cck8OJdp.o
  .ARM.attributes
                 0x0000000000000096       0x2d /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtend.o
  .ARM.attributes
                 0x00000000000000c3       0x1d /home/javier/gcc/bin/../lib/gcc/arm-none-eabi/6.2.1/thumb/v7-m/crtn.o
 
 .comment        0x0000000000000000       0x6e
- .comment       0x0000000000000000       0x6e /tmp/ccVl4eor.ltrans0.ltrans.o
+ .comment       0x0000000000000000       0x6e /tmp/cc5uYZPE.ltrans0.ltrans.o
                                          0x6f (size before relaxing)
 
-.debug_info     0x0000000000000000       0xed
- .debug_info    0x0000000000000000       0x8b /tmp/ccVl4eor.ltrans0.ltrans.o
- .debug_info    0x000000000000008b       0x62 /tmp/ccs2ZE5G.o
+.debug_info     0x0000000000000000       0xb8
+ .debug_info    0x0000000000000000       0x56 /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .debug_info    0x0000000000000056       0x62 /tmp/cck8OJdp.o
 
-.debug_abbrev   0x0000000000000000       0x8d
- .debug_abbrev  0x0000000000000000       0x79 /tmp/ccVl4eor.ltrans0.ltrans.o
- .debug_abbrev  0x0000000000000079       0x14 /tmp/ccs2ZE5G.o
+.debug_abbrev   0x0000000000000000       0x6b
+ .debug_abbrev  0x0000000000000000       0x57 /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .debug_abbrev  0x0000000000000057       0x14 /tmp/cck8OJdp.o
 
-.debug_aranges  0x0000000000000000       0x48
+.debug_aranges  0x0000000000000000       0x40
  .debug_aranges
-                0x0000000000000000       0x28 /tmp/ccVl4eor.ltrans0.ltrans.o
+                0x0000000000000000       0x20 /tmp/cc5uYZPE.ltrans0.ltrans.o
  .debug_aranges
-                0x0000000000000028       0x20 /tmp/ccs2ZE5G.o
+                0x0000000000000020       0x20 /tmp/cck8OJdp.o
 
-.debug_ranges   0x0000000000000000       0x18
- .debug_ranges  0x0000000000000000       0x18 /tmp/ccVl4eor.ltrans0.ltrans.o
+.debug_ranges   0x0000000000000000       0x28
+ .debug_ranges  0x0000000000000000       0x28 /tmp/cc5uYZPE.ltrans0.ltrans.o
 
-.debug_line     0x0000000000000000       0xb4
- .debug_line    0x0000000000000000       0x51 /tmp/ccVl4eor.ltrans0.ltrans.o
- .debug_line    0x0000000000000051       0x63 /tmp/ccs2ZE5G.o
+.debug_line     0x0000000000000000       0xb1
+ .debug_line    0x0000000000000000       0x4e /tmp/cc5uYZPE.ltrans0.ltrans.o
+ .debug_line    0x000000000000004e       0x63 /tmp/cck8OJdp.o
 
-.debug_str      0x0000000000000000      0x162
- .debug_str     0x0000000000000000      0x162 /tmp/ccVl4eor.ltrans0.ltrans.o
+.debug_str      0x0000000000000000      0x155
+ .debug_str     0x0000000000000000      0x155 /tmp/cc5uYZPE.ltrans0.ltrans.o
 
-.debug_frame    0x0000000000000000       0x48
- .debug_frame   0x0000000000000000       0x48 /tmp/ccVl4eor.ltrans0.ltrans.o
+.debug_frame    0x0000000000000000       0x28
+ .debug_frame   0x0000000000000000       0x28 /tmp/cc5uYZPE.ltrans0.ltrans.o

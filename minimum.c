@@ -13,16 +13,24 @@
 #define RCC_BASE   		0x40021000
 #define RCC_APB2ENR_OFFSET 	0x18
 
+volatile uint32_t *rcc_apb2enr = (uint32_t*)(RCC_BASE + RCC_APB2ENR_OFFSET);
+volatile uint32_t *gpioc_bsrr  = (uint32_t*)(GPIOC_BASE + GPIO_BSRR_OFFSET);
+volatile uint32_t *gpioc_crh   = (uint32_t*)(GPIOC_BASE + GPIO_CRH_OFFSET);
+
+void delay(int n) {
+	for (volatile int i = 0; i < n; i++);
+}
+
 void led_flash() {
-	*(uint32_t*)(RCC_BASE + RCC_APB2ENR_OFFSET) = (1<<4); // EN CLK FOR GPIO C
-	*(uint32_t*)(GPIOC_BASE + GPIO_CRH_OFFSET) = (0x00 << 22) | (0x02 << 20) | 0x44044444;
-	*(uint32_t*)(GPIOC_BASE + GPIO_BSRR_OFFSET) = (0x01<<13); // Turn on LED
+	*rcc_apb2enr = (1<<4); // EN CLK FOR GPIO C
+	*gpioc_crh   = (0x00 << 22) | (0x02 << 20) | 0x44044444;
+	*gpioc_bsrr  = (0x01<<13); // Turn on LED
 
 	while(1) {
-		for(int i = 0; i < 1000000; i++);
-		*(uint32_t*)(GPIOC_BASE + GPIO_BSRR_OFFSET) = (0x01<<29); // Turn off LED's
-		for(int i = 0; i < 1000000; i++);
-		*(uint32_t*)(GPIOC_BASE + GPIO_BSRR_OFFSET) = (0x01<<13); // Turn on LED's
+		delay(1000000);
+		*gpioc_bsrr = (0x01<<29); // Turn off LED's
+		delay(1000000);
+		*gpioc_bsrr = (0x01<<13); // Turn on LED's
 	}
 }
 
